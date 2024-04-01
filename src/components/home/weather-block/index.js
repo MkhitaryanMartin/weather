@@ -4,11 +4,13 @@ import { tempScale } from "../../../assets/data";
 
 const WeatherBlock = ({
    data,
-   temp
+   temp,
+   loader
 })=>{
+   console.log(loader)
     return (
        <Box>
-         <p>Temperature : {data?.main?.temp} {tempScale[temp]}</p>
+         {loader ? <p>loader</p> : <p>Temperature : {data?.main?.temp} {tempScale[temp]}</p>}
       <p>Air humidity : {data?.main?.humidity}</p>
       <p>Visibility : {data?.visibility}</p>
       <div>

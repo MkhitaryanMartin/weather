@@ -15,6 +15,11 @@ const weatherReducer = createSlice({
         builder
         .addCase(fetchWeather.fulfilled, (state, action)=>{
             state.data = action.payload
+            state.loader = false
+                   
+        })
+        .addCase(fetchWeather.pending, (state, action)=>{
+            state.loader = true
                    
         })
     }

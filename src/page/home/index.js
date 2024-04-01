@@ -13,7 +13,7 @@ import { temperatureScale } from "../../assets/data";
 
 function Home() {
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.weather);
+  const { data, loader } = useSelector((state) => state.weather);
   const { data: forecastData } = useSelector((state) => state.forecast);
   const [value, setValue] = useState({
     searchValue: "",
@@ -49,10 +49,10 @@ const onSetValue = (eventName, newValue)=>{
     }
   }, [value.searchValue])
 
-
+console.log(data)
   return (
     <>
-      {data && <WeatherBlock data={data} temp={value.temperature}/>}
+      {data && <WeatherBlock data={data} temp={value.temperature} loader={loader}/>}
       <Form onSubmit={onSetValue} eventName={"searchValue"}/>
       {icons["clear sky"](isDaytime(data?.sys?.sunrise, data?.sys?.sunset))}
       <SelectVariants options={temperatureScale} value={value.temperature} eventName="temperature" handleChange={onSetValue}/>
