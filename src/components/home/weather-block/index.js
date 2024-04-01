@@ -1,10 +1,14 @@
 import React from "react";
 import { Box } from "@mui/material";
+import { tempScale } from "../../../assets/data";
 
-const WeatherBlock = ({data})=>{
+const WeatherBlock = ({
+   data,
+   temp
+})=>{
     return (
        <Box>
-         <p>Temperature : {data?.main?.temp}</p>
+         <p>Temperature : {data?.main?.temp} {tempScale[temp]}</p>
       <p>Air humidity : {data?.main?.humidity}</p>
       <p>Visibility : {data?.visibility}</p>
       <div>
