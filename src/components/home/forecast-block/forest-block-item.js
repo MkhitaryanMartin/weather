@@ -8,26 +8,34 @@ export default function ForestBlockItem({
     temp
 }) {
     return (
-        <Box 
-        display="flex" 
-        flexDirection="column" 
-        alignItems="center" 
-        sx={{ minWidth: "360px", cursor:"pointer",
-         background:"#7A54E1",
-         '&:hover': {
-           transform: "scale(1.1)",
-        }}}
-        m="10px"
+        <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            sx={{
+                minWidth: {xs:"280px", md:"360px"},
+                cursor: "pointer",
+                background: "rgba(0, 0, 0, 0.9)",
+                '&:hover': {
+                    transform: "scale(1.1)",
+                },
+                '& p': {
+                    m: "15px 0",
+                    color: "white"
+                },
+            }}
+
+            m="10px 20px 0 0"
         >
-            <p className="p">
-                {data?.city?.name} {getDayText(data["dt_txt"])}
+            <Box component="p" display="flex" alignItems="center">
+                {getDayText(data["dt_txt"])}
                 <img src={`http://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`} alt="weather" />
-            </p>
+            </Box>
             <p>Temperature : {data?.main?.temp} {tempScale[temp]}</p>
-            <p>Air humidity in currencies: {data?.main?.humidity}%</p>
-            <p>Visibility in meters: {data?.visibility}m</p>
-            <p>Wind speed in meters per second : {data?.wind?.speed}m/s</p>
-            <p>Wind direction in degrees : {data?.wind?.deg}°</p>
+            <p>Air humidity: {data?.main?.humidity}%</p>
+            <p>Visibility: {data?.visibility}m</p>
+            <p>Wind speed  : {data?.wind?.speed}m/s</p>
+            <p>Wind direction : {data?.wind?.deg}°</p>
             {data?.weather && <p>Weather description : {data?.weather[0]?.description}</p>}
         </Box>
     )

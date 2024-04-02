@@ -15,6 +15,7 @@ export const dispatchGeoLocation=(dispatch, fetchWeather, fetchForecast, units)=
 }
 
 export const dispatchRegion=(dispatch, fetchWeather, fetchForecast, q, units)=>{
+  console.log(q, units)
     dispatch(fetchWeather({ name: "weather", q:q, units:units}))
       dispatch(fetchForecast({ name: "forecast", q:q, units:units }))
 }

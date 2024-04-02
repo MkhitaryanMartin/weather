@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { tempScale } from "../../../assets/data";
 
 const WeatherBlock = ({
@@ -8,16 +8,37 @@ const WeatherBlock = ({
    loader
 }) => {
    return (
-     <Box display="flex" justifyContent="space-between" p="5%">
-      <Typography variant="h1">
+     <Box 
+     display="flex" 
+     flexDirection="column"
+     alignItems="flex-start"
+     p="5%" 
+     sx={{ background:"rgba(0, 0, 0, 0.5)"}}
+     >
+      <Typography variant="h1" sx={{
+         color:"white",
+         fontSize: {
+            xs: '2rem', 
+            md: '4rem',
+          }
+         }} >
          {data.name}
       </Typography>
-       <Box display="flex" flexDirection="column" alignItems="flex-start">
-         {loader ? <p>loader</p> : <p>Temperature : {data?.main?.temp} {tempScale[temp]}</p>}
-         <p>Air humidity in currencies: {data?.main?.humidity}%</p>
-         <p>Visibility in meters: {data?.visibility}m</p>
-         <p>Wind speed in meters per second : {data?.wind?.speed}m/s</p>
-         <p>Wind direction in degrees : {data?.wind?.deg}°</p>
+       <Box 
+       display="flex"
+        flexDirection="column" 
+        alignItems="flex-start" 
+        sx={{ '& p': {
+      whiteSpace: 'nowrap',
+      m:"15px 0",
+      color:"white",
+    }}}
+        >
+        <p>Temperature : {data?.main?.temp} {tempScale[temp]}</p>
+         <p>Air humidity: {data?.main?.humidity}%</p>
+         <p>Visibility: {data?.visibility}m</p>
+         <p>Wind speed: {data?.wind?.speed}m/s</p>
+         <p>Wind direction: {data?.wind?.deg}°</p>
         {data?.weather &&  <Box display="flex">
             <p>Weather description : {data?.weather[0]?.description}</p>
             <img src={`http://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`} alt="weather" />

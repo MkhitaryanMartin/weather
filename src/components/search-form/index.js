@@ -13,12 +13,12 @@ export default function SearchForm({
 }) {
 const [value, setValue] = useState("");
 const [error, setError] = useState("")
-console.log(!(!!value), !!error)
   return (
           <div>
             <Search onSubmit={(e)=> {
             e.preventDefault()
             onSubmit(eventName, e.target.search.value)
+            e.target.search.value = ""
           }}>
           
             <StyledInputBase

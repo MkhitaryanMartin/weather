@@ -9,7 +9,7 @@ export const fetchForecast=createAsyncThunk(
             const res = await WeatherService.fetchWeather(params);
             return res.data
         } catch (error) {
-            return thunkApi.rejectWithValue(error)
+            return thunkApi.rejectWithValue(error.message)
         }
     }
 )

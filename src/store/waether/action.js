@@ -9,7 +9,10 @@ export const fetchWeather=createAsyncThunk(
             const res = await WeatherService.fetchWeather(params);
             return res.data
         } catch (error) {
-            return thunkApi.rejectWithValue(error)
+            if(error.response.status ===  404){
+                return thunkApi.rejectWithValue("This location was not found")
+            }
+            return thunkApi.rejectWithValue(error.message)
         }
     }
 )

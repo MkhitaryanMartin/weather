@@ -11,7 +11,7 @@ const ForecastBlock = ({
     return (
         <Box textAlign="center">
 
-            <Box display="flex" p="5%">
+            <Box display="flex"  sx={{p:{xs:"5px", md:"0 5%"}}}>
              <Scroller>
              {data.list.map((data) => {
                     return <ForestBlockItem data={data} temp={temp} key={data?.dt_txt}/>
