@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import WeatherBlock from "../../components/home/weather-block";
 import ForecastBlock from "../../components/home/forecast-block";
 import CustomizedSnackbars from "../../components/snackbar";
@@ -11,6 +11,7 @@ function Home() {
   const { data, loader, value, error } = useSelector((state) => state.weather);
   const { data: forecastData } = useSelector((state) => state.forecast);
   const [open, setOpen] = useState(!!error);
+  
   const handleClose = () => {
     setOpen(false);
   };
@@ -22,7 +23,6 @@ if(error){
 }
 },[error])
 
-console.log(data)
 return (
     <Box position="relative">
      <Box

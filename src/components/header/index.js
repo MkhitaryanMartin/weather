@@ -6,7 +6,7 @@ import { fetchWeather } from "../../store/waether/action";
 import { fetchForecast } from "../../store/forecast/action";
 import SelectVariants from "../../components/select";
 import { temperatureScale } from "../../assets/data";
-import { dispatchGeoLocation, dispatchRegion } from "./utilits";
+import { dispatchGeoLocation, dispatchRegion, dispatchStaticLoc } from "./utilits";
 import { setError, setValue } from '../../store/waether/reducer';
 
 
@@ -14,17 +14,15 @@ import { setError, setValue } from '../../store/waether/reducer';
 
 export default function Header() {
     const dispatch = useDispatch();
-    const {value } = useSelector((state) => state.weather);
+    const {value, data } = useSelector((state) => state.weather);
    
   const onSetValue = (eventName, newValue) => {
         dispatch(setValue({eventName, newValue}))
         if (eventName === "searchValue" && newValue) {
           dispatch(setError())
           dispatchRegion(dispatch, fetchWeather, fetchForecast, newValue, value.temperature)
-        } else if(value.searchValue) {
-          dispatchRegion(dispatch, fetchWeather, fetchForecast, value.searchValue, newValue,)
         }else{
-          dispatchGeoLocation(dispatch, fetchWeather, fetchForecast, value.temperature)
+          dispatchStaticLoc(dispatch, fetchWeather, fetchForecast, newValue,  data.coord.lon, data.coord.lat,)
         }
       }
     
@@ -33,7 +31,7 @@ export default function Header() {
           dispatchGeoLocation(dispatch, fetchWeather, fetchForecast, value.temperature)
         }
       }, [])
-
+console.log(data)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">

@@ -19,7 +19,7 @@ const WeatherBlock = ({
          color:"white",
          fontSize: {
             xs: '2rem', 
-            md: '4rem',
+            md: '5rem',
           }
          }} >
          {data.name}
