@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import { tempScale } from "../../../assets/data";
 
-const WeatherBlock = ({
+const WeatherItem= ({
    data,
    temp,
    loader
@@ -22,4 +22,4 @@ const WeatherBlock = ({
    )
 }
 
-export default WeatherBlock;
+export default WeatherItem;

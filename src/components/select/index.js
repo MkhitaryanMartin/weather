@@ -13,14 +13,15 @@ export default function SelectVariants({
 
 }) {
   return (
-    <FormControl variant="standard" sx={{ m: 1, minWidth: 80 }}>
-    <InputLabel id="demo-simple-select-standard-label">{label}</InputLabel>
+    <FormControl variant="standard" sx={{ m: 1, minWidth: 80}}>
+    {/* <InputLabel id="demo-simple-select-standard-label">{label}aa</InputLabel> */}
     <Select
       labelId="demo-simple-select-standard-label"
       id="demo-simple-select-standard"
       value={value}
       onChange={(e)=>handleChange( eventName, e.target.value)}
       label={label}
+      sx={{background:"white"}}
     >
   {
     options.map((option)=> {

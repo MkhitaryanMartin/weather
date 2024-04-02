@@ -5,12 +5,20 @@ const initialState = {
     data:{},
     loader: false,
     error:"",
+    value: {
+        searchValue: "",
+        temperature: "standard"
+      }
 }
 
 const weatherReducer = createSlice({
     name:"weather",
     initialState: initialState,
-    reducers:{},
+    reducers:{
+        setValue : (state, action)=>{
+            state.value = {...state.value, [action.payload.eventName]: action.payload.newValue}
+        }
+    },
     extraReducers: (builder)=>{
         builder
         .addCase(fetchWeather.fulfilled, (state, action)=>{
@@ -25,5 +33,5 @@ const weatherReducer = createSlice({
     }
 });
 
-
+export const {setValue} = weatherReducer.actions
 export default weatherReducer.reducer;
