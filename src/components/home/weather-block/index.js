@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import { tempScale } from "../../../assets/data";
 
 const WeatherBlock = ({
@@ -8,7 +8,11 @@ const WeatherBlock = ({
    loader
 }) => {
    return (
-      <Box display="flex" flexDirection="column" alignItems="flex-start">
+     <Box display="flex" justifyContent="space-between" p="5%">
+      <Typography variant="h1">
+         {data.name}
+      </Typography>
+       <Box display="flex" flexDirection="column" alignItems="flex-start">
          {loader ? <p>loader</p> : <p>Temperature : {data?.main?.temp} {tempScale[temp]}</p>}
          <p>Air humidity in currencies: {data?.main?.humidity}%</p>
          <p>Visibility in meters: {data?.visibility}m</p>
@@ -19,6 +23,7 @@ const WeatherBlock = ({
             <img src={`http://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`} alt="weather" />
          </Box> }
       </Box>
+     </Box>
    )
 }
 

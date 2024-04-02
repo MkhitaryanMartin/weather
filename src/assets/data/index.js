@@ -1,7 +1,7 @@
 export const temperatureScale = [
     {
         value: "standard",
-        text:"K"
+        text:"°K"
     },
     {
         value: "metric",
@@ -14,7 +14,7 @@ export const temperatureScale = [
 ]
 
 export const tempScale ={
-    standard : "K",
+    standard : "°K",
     metric: "°C",
     imperial: "°F"
 }

@@ -21,7 +21,7 @@ export default function SelectVariants({
       value={value}
       onChange={(e)=>handleChange( eventName, e.target.value)}
       label={label}
-      sx={{background:"white"}}
+      sx={{background:"#7A54E1", color:"white"}}
     >
   {
     options.map((option)=> {

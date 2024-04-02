@@ -6,7 +6,7 @@ import ForecastBlock from "../../components/home/forecast-block";
 function Home() {
   const { data, loader, value } = useSelector((state) => state.weather);
   const { data: forecastData } = useSelector((state) => state.forecast);
-console.log(forecastData)
+
 return (
     <>
       {data && <WeatherBlock data={data} temp={value.temperature} loader={loader} />}

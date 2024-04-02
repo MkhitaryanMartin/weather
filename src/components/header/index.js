@@ -20,26 +20,26 @@ import { setValue } from '../../store/waether/reducer';
 export default function Header() {
     const dispatch = useDispatch();
     const { data, loader, value } = useSelector((state) => state.weather);
-    const { data: forecastData } = useSelector((state) => state.forecast);
- 
-    const onSetValue = (eventName, newValue) => {
+   
+  const onSetValue = (eventName, newValue) => {
         dispatch(setValue({eventName, newValue}))
         if (eventName === "searchValue" && newValue) {
-          dispatchRegion(dispatch, fetchWeather, fetchForecast, newValue, value.units)
+          dispatchRegion(dispatch, fetchWeather, fetchForecast, newValue, value.temperature)
         } else {
-          dispatchGeoLocation(dispatch, fetchWeather, fetchForecast, value.temperature)
+          dispatchGeoLocation(dispatch, fetchWeather, fetchForecast, newValue)
         }
       }
     
       useEffect(() => {
         if (!value.searchValue) {
+            console.log(value.temperature)
           dispatchGeoLocation(dispatch, fetchWeather, fetchForecast, value.temperature)
         }
-      }, [value.temperature])
+      }, [])
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
+        <Toolbar sx={{display:"flex", justifyContent:"space-between", background:"#7A54E1"}}>
           <IconButton
             size="large"
             edge="start"

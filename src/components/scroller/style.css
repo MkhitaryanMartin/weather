@@ -1,0 +1,8 @@
+.scroller{
+    display: flex;
+    overflow-x: auto;
+
+}
+.scroller::-webkit-scrollbar {
+    display: none; 
+}
