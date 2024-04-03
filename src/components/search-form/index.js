@@ -3,8 +3,6 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { Search, StyledInputBase } from './style-components';
 import { useState } from 'react';
-import { Typography } from '@mui/material';
-
 
 
 export default function SearchForm({
@@ -12,7 +10,11 @@ export default function SearchForm({
     eventName
 }) {
 const [value, setValue] = useState("");
-const [error, setError] = useState("")
+
+const onChange = (e)=>{
+  setValue(e.target.value)
+}
+
   return (
           <div>
             <Search onSubmit={(e)=> {
@@ -26,26 +28,12 @@ const [error, setError] = useState("")
               inputProps={{ 'aria-label': 'search' }}
               name='search'
               value={value}
-              onChange={(e)=> {
-               if(e.target.value){
-                if(!isNaN(+e.target.value)){
-                    setError("you can't write a number")
-                    setValue("")
-                }else{
-                    setError("")
-                    setValue(e.target.value)
-                }
-               }else{
-                setError("write the text")
-                setValue("")
-               }
-              }}
+              onChange={(e)=> onChange(e)}
             />
-            <IconButton type='submit' sx={{color:"white"}} disabled={!!error || !(!!value)}>
+            <IconButton type='submit' sx={{color:"white"}} disabled={!(!!value)}>
             <SearchIcon  color='#FFFFFF'/>
             </IconButton>
           </Search>
-          <Typography color="error">{error}</Typography>
           </div>
    
   );

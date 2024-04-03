@@ -16,6 +16,15 @@ const WeatherBlock = ({
          p="2%"
          sx={{ background: "rgba(0, 0, 0, 0.5)" }}
       >
+       <Typography variant="h1" sx={{
+            color: "white",
+            fontSize: {
+               xs: '2rem',
+               md: '5rem',
+            }
+         }} >
+            {data.country.name.common}
+         </Typography>
          <Typography variant="h1" sx={{
             color: "white",
             fontSize: {

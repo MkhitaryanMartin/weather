@@ -7,7 +7,7 @@ const initialState = {
     error:"",
     value: {
         searchValue: "",
-        temperature: "standard"
+        temperature: "metric"
       }
 }
 

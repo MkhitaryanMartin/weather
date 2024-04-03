@@ -7,6 +7,7 @@ export const fetchForecast=createAsyncThunk(
      async (params, thunkApi)=>{
         try {
             const res = await WeatherService.fetchWeather(params);
+            console.log(res.data)
             return res.data
         } catch (error) {
             return thunkApi.rejectWithValue(error.message)

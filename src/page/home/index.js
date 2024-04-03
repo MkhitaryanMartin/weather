@@ -22,7 +22,7 @@ if(error){
  
 }
 },[error])
-
+console.log(data)
 return (
     <Box position="relative" minHeight={"100vh"}>
      <Box
