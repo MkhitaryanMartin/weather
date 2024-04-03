@@ -18,23 +18,26 @@ const [error, setError] = useState("")
             <Search onSubmit={(e)=> {
             e.preventDefault()
             onSubmit(eventName, e.target.search.value)
-            e.target.search.value = ""
+            setValue("")
           }}>
           
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
               name='search'
+              value={value}
               onChange={(e)=> {
                if(e.target.value){
                 if(!isNaN(+e.target.value)){
                     setError("you can't write a number")
+                    setValue("")
                 }else{
                     setError("")
                     setValue(e.target.value)
                 }
                }else{
                 setError("write the text")
+                setValue("")
                }
               }}
             />
