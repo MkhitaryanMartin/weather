@@ -9,18 +9,17 @@ const ForecastBlock = ({
     loader
 }) => {
     return (
-        <Box textAlign="center">
-
-            <Box display="flex"  sx={{p:{xs:"5px", md:"0 5%"}}}>
-             <Scroller>
-             {data.list.filter((item,i)=>{
+        <Box textAlign="center" mt="20px">
+            <Box display="flex"  sx={{p:{xs:"5px", md:"0 2%"}}}>
+            <Box display="flex" width="100%"  flexWrap="wrap" sx={{justifyContent:{xs:"center", md:"space-between", sm:"space-around"}}}>
+            {data.list.filter((item)=>{
                if(item["dt_txt"].split(" ")[1].includes("12:00")){
                 return true
                }
              }).map((data) => {
                     return <ForestBlockItem data={data} temp={temp} key={data?.dt_txt}/>
                 })}
-             </Scroller>
+            </Box>
             </Box>
         </Box>
     )

@@ -4,7 +4,9 @@ import WeatherBlock from "../../components/home/weather-block";
 import ForecastBlock from "../../components/home/forecast-block";
 import CustomizedSnackbars from "../../components/snackbar";
 import { Box } from "@mui/material";
-import background from "../../assets/img/background.jpg"
+import background from "../../assets/img/background.jpg";
+import rain from "../../assets/img/rain.jpg";
+import rough from "../../assets/img/rough.avif"
 
 
 function Home() {
@@ -24,7 +26,7 @@ if(error){
 },[error])
 console.log(data)
 return (
-    <Box position="relative" minHeight={"100vh"}>
+    <Box position="relative" minHeight={"93vh"}>
      <Box
          position="absolute"
          top="0"
@@ -32,10 +34,12 @@ return (
          right="0"
          bottom="0"
          zIndex="-10"
+         
          sx={{
-           backgroundImage: `url(${background})`,
-           backgroundSize: "cover",
-           filter: "blur(2px)", 
+          //  backgroundImage: `url(${rough})`,
+          //  backgroundSize: "cover",
+          //  filter: "blur(2px)", 
+           background:"rgba(0, 0, 0, 0.8)"
          }}
 />
 {data && <WeatherBlock data={data} temp={value.temperature} loader={loader}/>}

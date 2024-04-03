@@ -30,8 +30,8 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar sx={{display:"flex",justifyContent:"flex-end", background:"#7A54E1" }}>
+      <AppBar position="relative" sx={{background:"rgba(0, 0, 0, 0.4)"}}>
+        <Toolbar sx={{display:"flex",justifyContent:"flex-end"}}>
    <Box display="flex" alignItems="center">
    <SelectVariants
         options={temperatureScale}
@@ -46,3 +46,4 @@ export default function Header() {
     </Box>
   );
 }
+
