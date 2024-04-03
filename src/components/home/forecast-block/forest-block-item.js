@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { getDayText } from "../../../utilits/getDay";
 import { tempScale } from "../../../assets/data";
-import "./style.css"
+import ItemWeather from "../itemWeather";
 
 export default function ForestBlockItem({
     data,
@@ -13,7 +13,7 @@ export default function ForestBlockItem({
             flexDirection="column"
             alignItems="center"
             sx={{
-                minWidth: {xs:"280px", md:"360px"},
+                minWidth: { xs: "280px", md: "360px" },
                 cursor: "pointer",
                 background: "rgba(0, 0, 0, 0.9)",
                 '&:hover': {
@@ -31,12 +31,8 @@ export default function ForestBlockItem({
                 {getDayText(data["dt_txt"])}
                 <img src={`http://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`} alt="weather" />
             </Box>
-            <p>Temperature : {data?.main?.temp} {tempScale[temp]}</p>
-            <p>Air humidity: {data?.main?.humidity}%</p>
-            <p>Visibility: {data?.visibility}m</p>
-            <p>Wind speed  : {data?.wind?.speed}m/s</p>
-            <p>Wind direction : {data?.wind?.deg}°</p>
-            {data?.weather && <p>Weather description : {data?.weather[0]?.description}</p>}
+            <ItemWeather data={data} temp={tempScale[temp]}/>
+            {data?.weather && <p>Description : {data?.weather[0]?.description}</p>}
         </Box>
     )
 }

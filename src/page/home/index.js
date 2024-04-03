@@ -24,7 +24,7 @@ if(error){
 },[error])
 
 return (
-    <Box position="relative">
+    <Box position="relative" minHeight={"100vh"}>
      <Box
          position="absolute"
          top="0"
@@ -38,7 +38,7 @@ return (
            filter: "blur(2px)", 
          }}
 />
-{data && <WeatherBlock data={data} temp={value.temperature} loader={loader} />}
+{data && <WeatherBlock data={data} temp={value.temperature} loader={loader}/>}
       {forecastData?.list && <ForecastBlock data={forecastData} temp={value.temperature}/>}
       <CustomizedSnackbars open={open} handleClose={handleClose} text={error}/>
     </Box>

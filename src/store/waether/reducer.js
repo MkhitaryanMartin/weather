@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchWeather } from "./action";
 
 const initialState = {
-    data:{},
+    data:null,
     loader: false,
     error:"",
     value: {
