@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import WeatherBlock from "../../components/home/weather-block";
 import ForecastBlock from "../../components/home/forecast-block";
 import CustomizedSnackbars from "../../components/snackbar";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import background from "../../assets/img/background.jpg";
 import rain from "../../assets/img/rain.jpg";
 import rough from "../../assets/img/rough.avif"
+import Loader from "../../components/loader";
 
 
 function Home() {
@@ -24,7 +25,6 @@ if(error){
  
 }
 },[error])
-console.log(data)
 return (
     <Box position="relative" minHeight={"93vh"}>
      <Box
@@ -42,7 +42,7 @@ return (
            background:"rgba(0, 0, 0, 0.8)"
          }}
 />
-{data && <WeatherBlock data={data} temp={value.temperature} loader={loader}/>}
+{loader ? <Loader/> : data && <WeatherBlock data={data} temp={value.temperature} loader={loader}/>}
       {forecastData?.list && <ForecastBlock data={forecastData} temp={value.temperature}/>}
       <CustomizedSnackbars open={open} handleClose={handleClose} text={error}/>
     </Box>
