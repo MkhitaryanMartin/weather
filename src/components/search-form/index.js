@@ -30,7 +30,7 @@ const onChange = (e)=>{
               value={value}
               onChange={(e)=> onChange(e)}
             />
-            <IconButton type='submit' sx={{color:"white"}} disabled={!(!!value)}>
+            <IconButton type='submit' sx={{color:"white"}} disabled={!(!!value) || !value.trim()}>
             <SearchIcon  color='#FFFFFF'/>
             </IconButton>
           </Search>

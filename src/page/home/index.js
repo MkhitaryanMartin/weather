@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import WeatherBlock from "../../components/home/weather-block";
 import ForecastBlock from "../../components/home/forecast-block";
 import CustomizedSnackbars from "../../components/snackbar";
-import { Box} from "@mui/material";
+import { Box, Button} from "@mui/material";
 import Loader from "../../components/loader";
+import Map from "../../components/map";
 
 
 function Home() {
@@ -22,17 +23,10 @@ if(error){
 }
 },[error])
 
+
 return (
     <Box position="relative" minHeight={"93vh"} minWidth="280px">
-     <Box
-         position="absolute"
-         top="0"
-         left="0"
-         right="0"
-         bottom="0"
-         zIndex="-10"
-         sx={{background:"rgba(0, 0, 0, 0.8)"}}
-/>
+    <Map/>
 {loader ? <Loader/> : data && <WeatherBlock data={data} temp={value.temperature} loader={loader}/>}
       {forecastData?.list && <ForecastBlock data={forecastData} temp={value.temperature}/>}
       <CustomizedSnackbars open={open} handleClose={handleClose} text={error}/>

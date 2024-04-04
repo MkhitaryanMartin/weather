@@ -9,7 +9,8 @@ const ForecastBlock = ({
     return (
         <Box textAlign="center" mt="20px">
             <Box display="flex"  sx={{p:{xs:"5px", md:"0 2%"}}}>
-            <Box display="flex" width="100%"  flexWrap="wrap" sx={{justifyContent:{xs:"center", md:"space-around", sm:"space-around"}}}>
+            <Box display="flex" width="100%"  flexWrap="wrap" 
+            sx={{justifyContent:{xs:"center", md:"space-between", sm:"space-around"}}}>
             {data.list.filter((item,i)=>{
                if(item["dt_txt"].split(" ")[1].includes("12:00") && i !== 1){
                 return true
