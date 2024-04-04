@@ -7,7 +7,6 @@ import  imiges from "../../../assets/img"
 const WeatherBlock = ({
    data,
    temp,
-   loader
 }) => {
    return (
       <Box
@@ -18,10 +17,9 @@ const WeatherBlock = ({
          <Grid container 
          columnGap="5px"
          rowGap="10px"
-         sx={{"& p":{
-            color:"white",
-         },
-         justifyContent:{
+         sx={{
+            "& p":{color:"white"},
+             justifyContent:{
             xs:"center",
             sm:"space-around",
             md:"space-between"
@@ -30,11 +28,20 @@ const WeatherBlock = ({
             padding: "5px 0"
          }
          }}>
-            <Grid item md={12} sm={12} xs={12}  container display="flex" alignItems="center" >
-            <Typography variant="h1" mr="10px" sx={{color: "white",fontSize:{xs: '2rem',md: '5rem',}, }}>
-            {data.country.name.common}
+            <Grid item md={12} sm={12} xs={12}  
+            container display="flex" alignItems="center" m="25px 0" justifyContent="center">
+            <Typography variant="h1" mr="10px" 
+            sx={{color: "white",fontSize:{xs: '2rem',md: '3rem',}, }}>
+            {data.country.name.common !== data.name ? data.country.name.common : ""} 
          </Typography>
-            <Typography variant="h2"  sx={{color: "white",fontSize: {xs: '2rem', md: '3rem',},"& img":{m:"0 20px", width:{md:"100px", xs:"50px"}}}}>
+            <Typography variant="h2"  sx={{
+               display:"flex", 
+               alignItems:"center",
+               color: "white",
+               fontSize: {xs: '2rem', md: '3rem',},
+               "& img":{ml:"20px",
+               width:{md:"100px", xs:"50px"}, 
+               height:{md:"100%", xs:"25px"}}}}>
             {data.name}
             <img src={data.country.flags.png} alt="flag"/>
          </Typography>
@@ -77,10 +84,4 @@ const WeatherBlock = ({
 
 export default WeatherBlock;
 
-   {/* <ItemWeather data={data} temp={tempScale[temp]}/>
-            {
-            data?.weather && <Box display="flex">
-               <p>Description : {data?.weather[0]?.description}</p>
-               <img src={`http://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`} alt="weather" />
-            </Box>
-            } */}
+ 

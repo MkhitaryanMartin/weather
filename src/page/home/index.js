@@ -3,10 +3,7 @@ import { useSelector } from "react-redux";
 import WeatherBlock from "../../components/home/weather-block";
 import ForecastBlock from "../../components/home/forecast-block";
 import CustomizedSnackbars from "../../components/snackbar";
-import { Box, CircularProgress } from "@mui/material";
-import background from "../../assets/img/background.jpg";
-import rain from "../../assets/img/rain.jpg";
-import rough from "../../assets/img/rough.avif"
+import { Box} from "@mui/material";
 import Loader from "../../components/loader";
 
 
@@ -22,11 +19,11 @@ function Home() {
 useEffect(()=>{
 if(error){
   setOpen(!!error)
- 
 }
 },[error])
+
 return (
-    <Box position="relative" minHeight={"93vh"}>
+    <Box position="relative" minHeight={"93vh"} minWidth="280px">
      <Box
          position="absolute"
          top="0"
@@ -34,13 +31,7 @@ return (
          right="0"
          bottom="0"
          zIndex="-10"
-         
-         sx={{
-          //  backgroundImage: `url(${rough})`,
-          //  backgroundSize: "cover",
-          //  filter: "blur(2px)", 
-           background:"rgba(0, 0, 0, 0.8)"
-         }}
+         sx={{background:"rgba(0, 0, 0, 0.8)"}}
 />
 {loader ? <Loader/> : data && <WeatherBlock data={data} temp={value.temperature} loader={loader}/>}
       {forecastData?.list && <ForecastBlock data={forecastData} temp={value.temperature}/>}
